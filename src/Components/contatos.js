@@ -24,30 +24,47 @@ const Form = () =>{
 
     
     function registerCliente(event){
+        
         event.preventDefault();
 
         const url = "http://localhost/react-PHP/backend/register-cliente.php";
 
+        let formData = new FormData(event.target)
+
         fetch(url, {
+            
             method: "POST",
-            body: new FormData(event.target)
+           
+            body: formData
         })
+        
         .then((response) => response.json())
+        
         .then((dados) => console.log(dados))
 
     }
 
     return (
         <div className="container justify-content-center mt-5">
+            
             <h4 id="p">Faça o seu cadastro, e aproveite e faça já o seu pedido!</h4>
+            
             <div id="container" className="row justify-content-center">
+                
                 <form onSubmit={registerCliente} className="w-50">
+                    
                     <Input type="text" name="nome" placeholder="Nome"/>
+                    
                     <Input type="text" name="endereco" placeholder="Endereco"/>
+                    
                     <Input type="number" name="telefone" placeholder="Telefone"/>
+                    
                     <Input type="text" name="produto" placeholder="Produto"/>
+                    
                     <Input type="number" name="valorUni" placeholder="Valor unitario"/>
+                    
                     <Input type="number" name="quantidade" placeholder="Quantidade"/>
+                    
                     <Input type="number" name="valorTot" placeholder="Valor total"/>
                     <button id="btn1" className="btn w-100 mb-2 mt-2">Enviar</button>
                 </form>

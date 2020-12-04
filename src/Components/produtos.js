@@ -13,17 +13,16 @@ const Card = () =>{
     }, [users])
 
     return (
-        <div id="div"className="mt-5">
+        <div id="div" className="mt-5">
             {users.map((element)=>{
             return(
-                <div id="teste2" className="Conteiner">
-                <div key={element.idproduto} className={`${element.categoria}`}></div>
-                <div className="card-body">
-                <img id="teste" className="card-img-top" src={require(`./img/${element.imagem}`).default} alt="Imagem de capa do card" />
-                    <p className="card-text">{element.descricao}</p>
-                    <p className="card-text"><b>R$ {element.preco}</b></p>
-                    <p className="card-text">R$ {element.preco_venda}</p>
-                </div>
+                <div id={element.categoria}  key={element.idproduto} className="Conteiner">
+                    <div className="card-body">
+                        <img id="teste" className="card-img-top" src={require(`./img/${element.imagem}`).default} alt="Imagem de capa do card" />
+                        <p className="card-text">{element.descricao}</p>
+                        <p className="card-text"><b>R$ {element.preco}</b></p>
+                        <p className="card-text">R$ {element.preco_venda}</p>
+                    </div>
                 </div>
             )
         })}
@@ -32,28 +31,41 @@ const Card = () =>{
 }
 
 const Drop = () =>{
-        function exibir_categorias(event){
-            console.log(event)
+    function exibir_categorias(event){
+        let elementos = document.getElementsByClassName('Conteiner');
+        for(var i = 0; i < elementos.length; i++){
+            if(event == elementos[i].id){
+                elementos[i].style = "display:inline-block"
+            }else{
+                elementos[i].style = "display:none"
+            }
         }
-        return(
-        <div>
-            <div className="row">
-                <div className="dropdown ml-5">
-                    <button className="btn dropdown-toggle" type="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Categorias
-                    </button>
-                    <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a className="dropdown-item" onClick={exibir_categorias('Todos')}>Todos</a>
-                        <a className="dropdown-item" onClick={exibir_categorias('Geladeira')}>Geladeira</a>
-                        <a className="dropdown-item" onClick={exibir_categorias('Fogao')}>Fogao</a>
-                        <a className="dropdown-item" onClick={exibir_categorias('Microondas')}>Micro-ondas</a>
-                        <a className="dropdown-item" onClick={exibir_categorias('Maquina-louca')}>Maquina de lavar louça</a>
-                        <a className="dropdown-item" onClick={exibir_categorias('Maquina-roupa')}>Maquina de lavar Roupa</a>
-                    </div>
+    }
+    let exibir_todos = () => {
+        let elementos = document.getElementsByClassName('Conteiner');
+        for(var i = 0; i < elementos.length; i++){
+            elementos[i].style = "display:inline-block"
+        }       
+    }
+    return(
+    <div>
+        <div className="row">
+            <div className="dropdown ml-5">
+                <button className="btn dropdown-toggle" type="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Categorias
+                </button>
+                <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a className="dropdown-item" onClick={() => exibir_todos('Todos')}>Todos</a>
+                    <a className="dropdown-item" onClick={() => exibir_categorias('Geladeira')}>Geladeira</a>
+                    <a className="dropdown-item" onClick={() => exibir_categorias('Fogao')}>Fogao</a>
+                    <a className="dropdown-item" onClick={() => exibir_categorias('Micro-ondas')}>Micro-ondas</a>
+                    <a className="dropdown-item" onClick={() => exibir_categorias('Lava-roupa')}>Maquina de lavar louça</a>
+                    <a className="dropdown-item" onClick={() => exibir_categorias('Lava-louca')}>Maquina de lavar Roupa</a>
                 </div>
             </div>
-        </div>  
-        )
+        </div>
+    </div>  
+    )
     }
 
 

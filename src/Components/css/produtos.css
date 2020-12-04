@@ -3,7 +3,7 @@
     padding: auto;
 }
 #Pagamentos{
-    margin-top: 550px;
+    margin-top: 100px;
     background: #040b1f;
     color: #FFF7D6;
     font-family: Arial, Helvetica, sans-serif;
@@ -24,7 +24,7 @@ img{
     width: 130px;
 }
 
-#teste2{
+.Conteiner{
     background: white;
     display: grid;
     grid: 10px / auto auto auto;
@@ -38,7 +38,7 @@ img{
     box-shadow: 5px 10px #586c8a;
     transition: 0.4s;
 }
-#teste2:hover{
+.Conteiner:hover{
     box-shadow: 0px 0px;
 }
 #events:hover{
